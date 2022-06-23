@@ -246,6 +246,15 @@ public class Client {
             socketChannel.connect(new InetSocketAddress("localhost", port));
             socketChannel.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
 
+            try {
+                byteArrayOutputStream = new ByteArrayOutputStream();
+                objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            }
+            catch (IOException e){
+                ConsoleIOManager.printErr(e.getMessage());
+                System.exit(777);
+            }
+
             while (!socketChannel.finishConnect()){
                 Thread.sleep(500);
             }

@@ -3,3 +3,7 @@
 /government_table.txt
 /save.json
 /users_table.txt
+/.idea/
+/client/target/
+/server/target/
+/common/target/
