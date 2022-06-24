@@ -196,6 +196,7 @@ public class CityCollectionManager{
             } else {
                 int index = getIndexById(id);
                 cityCollection.remove(index);
+                collectionIdSet.remove(id);
                 response = new Response(ResponseStatus.SUCCESS, "Элемент с id " + id + " успешно удален");
             }
         }
@@ -218,7 +219,8 @@ public class CityCollectionManager{
     public Response clearCollection(int userId) {
         lock.writeLock().lock();
         try {
-            for (City city : cityCollection) {
+            ArrayList<City> cityCollectionClone = (ArrayList<City>) cityCollection.clone();
+            for (City city : cityCollectionClone) {
                 if (city.getCreatorID() == userId) {
                     int res = dataBaseHandler.deleteCity(city.getId(), userId);
                     if (res == 1){

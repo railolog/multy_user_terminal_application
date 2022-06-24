@@ -191,8 +191,10 @@ public class DataBaseHandler {
             else {
                 for (long id: dbIdSet){
                     if (!collectionIdSet.contains(id)){
+                        collectionIdSet.add(id);
                         return id;
                     }
+                    System.out.println(id);
                 }
             }
         }
