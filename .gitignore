@@ -8,3 +8,6 @@
 /server/target/
 /common/target/
 /sc
+/send_file.sh
+/config_info
+/ungit/

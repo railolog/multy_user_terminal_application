@@ -58,7 +58,7 @@ public class Server implements Serializable{
                     Socket clientSocket = serverSocket.accept();
                     cachedThreadPool.submit(new ClientComManager(clientSocket, this, requestHandler));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                     System.err.println("Не удалось установить соединение с клиентом.");
                 }
 

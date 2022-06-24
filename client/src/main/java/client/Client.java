@@ -100,6 +100,8 @@ public class Client {
                 case ("help"):
                     System.out.println(helpMenu);
                     break;
+                case ("exit"):
+                    return false;
                 case ("sign_in"):
                     System.out.print("Введите логин: ");
                     username = ConsoleIOManager.readLine();
@@ -162,7 +164,9 @@ public class Client {
                 return true;
             }
         } while (!request.getCommandName().equals("exit"));
-        return false;
+        logged_in = false;
+        System.out.println("Вы вышли из своего аккаунта");
+        return true;
     }
 
     private void sendRequest(Request request) throws IOException {
