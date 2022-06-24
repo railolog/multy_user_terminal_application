@@ -287,7 +287,7 @@ public class CityCollectionManager{
             if (cityCollection.size() == 0) {
                 return new Response(ResponseStatus.SUCCESS, "Коллекция пуста");
             } else {
-                return new Response(ResponseStatus.SUCCESS, cityCollection.stream().min(City::compareTo).toString());
+                return new Response(ResponseStatus.SUCCESS, cityCollection.stream().min(City::compareTo).get().toString());
             }
         }
         finally {

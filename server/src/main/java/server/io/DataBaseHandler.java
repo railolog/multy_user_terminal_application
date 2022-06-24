@@ -140,14 +140,14 @@ public class DataBaseHandler {
 
     public int updateCity(Long id, City city, int userId){
         String updateTmpl = "UPDATE cities\n" +
-                "set name = ?\n" +
-                "coords = ?\n" +
-                "area = ?\n" +
-                "population = ?\n" +
-                "meters_above_sea_level = ?\n" +
-                "is_capital = ?\n" +
-                "telephone_code = ?\n" +
-                "government = ?\n" +
+                "set name = ?,\n" +
+                "coords = POINT(?, ?),\n" +
+                "area = ?,\n" +
+                "population = ?,\n" +
+                "meters_above_sea_level = ?,\n" +
+                "is_capital = ?,\n" +
+                "telephone_code = ?,\n" +
+                "government = ?,\n" +
                 "governor = ?\n" +
                 "where id = ? and creator_id = ?";
 
@@ -163,11 +163,12 @@ public class DataBaseHandler {
             preparedStatement.setString(9, city.getGovernment() == null ? null : city.getGovernment().toString());
             preparedStatement.setObject(10, city.getGovernor() == null ? null : city.getGovernor().getHeight());
             preparedStatement.setLong(11, id);
-            preparedStatement.setInt(12, city.getCreatorID());
+            preparedStatement.setInt(12, userId);
 
             return preparedStatement.executeUpdate();
         }
         catch (SQLException e){
+            e.printStackTrace();
             return -1;
         }
     }
